@@ -3,14 +3,16 @@ package smtp
 import (
 	"github.com/appscode/go-notify"
 	h2t "github.com/jaytaylor/html2text"
+	"github.com/kelseyhightower/envconfig"
 	gomail "gopkg.in/gomail.v2"
 )
 
 type Options struct {
-	Host               string
-	Port               int
-	InsecureSkipVerify bool
-	Username, Password string
+	Host               string // SMTP_HOST
+	Port               int    //SMTP_PORT
+	InsecureSkipVerify bool   // SMTP_INSECURE_SKIP_VERIFY
+	Username           string // SMTP_USERNAME
+	Password           string // SMTP_PASSWORD
 }
 
 type client struct {
@@ -27,6 +29,15 @@ func New(opt Options) *client {
 		opt:  opt,
 		mail: gomail.NewMessage(),
 	}
+}
+
+func Default() (*client, error) {
+	var opt Options
+	err := envconfig.Process("smtp", &opt)
+	if err != nil {
+		return nil, err
+	}
+	return New(opt), nil
 }
 
 func (c *client) From(from string) {

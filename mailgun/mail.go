@@ -4,13 +4,14 @@ import (
 	notify "github.com/appscode/go-notify"
 	"github.com/appscode/log"
 	h2t "github.com/jaytaylor/html2text"
+	"github.com/kelseyhightower/envconfig"
 	mailgun "github.com/mailgun/mailgun-go"
 )
 
 type Options struct {
-	Domain       string
-	ApiKey       string
-	PublicApiKey string
+	Domain       string // MAILGUN_DOMAIN
+	ApiKey       string // MAILGUN_API_KEY
+	PublicApiKey string // MAILGUN_PUBLIC_API_KEY
 }
 
 type client struct {
@@ -30,6 +31,15 @@ func New(opt Options) *client {
 	return &client{
 		mg: mailgun.NewMailgun(opt.Domain, opt.ApiKey, opt.PublicApiKey),
 	}
+}
+
+func Default() (*client, error) {
+	var opt Options
+	err := envconfig.Process("mailgun", &opt)
+	if err != nil {
+		return nil, err
+	}
+	return New(opt), nil
 }
 
 func (c *client) From(from string) {

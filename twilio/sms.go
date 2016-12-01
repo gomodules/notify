@@ -8,11 +8,12 @@ import (
 	"time"
 
 	"github.com/appscode/go-notify"
+	"github.com/kelseyhightower/envconfig"
 )
 
 type Options struct {
-	AccountSid string
-	AuthToken  string
+	AccountSid string // TWILIO_ACCOUNT_SID
+	AuthToken  string // TWILIO_ACCOUNT_TOKEN
 }
 
 type client struct {
@@ -27,6 +28,15 @@ func New(opt Options) *client {
 		opt: opt,
 		v:   url.Values{},
 	}
+}
+
+func Default() (*client, error) {
+	var opt Options
+	err := envconfig.Process("twilio", &opt)
+	if err != nil {
+		return nil, err
+	}
+	return New(opt), nil
 }
 
 func (c *client) From(from string) {
