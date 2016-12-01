@@ -2,7 +2,6 @@ package mailgun
 
 import (
 	notify "github.com/appscode/go-notify"
-	"github.com/appscode/log"
 	h2t "github.com/jaytaylor/html2text"
 	"github.com/kelseyhightower/envconfig"
 	mailgun "github.com/mailgun/mailgun-go"
@@ -78,10 +77,7 @@ func (c *client) Send() error {
 	msg.SetTrackingClicks(true)
 	msg.SetTrackingOpens(true)
 	response, id, err := c.mg.Send(msg)
-	log.Infof("Mailgun server response[%v]: %v\n", id, response)
 	if err != nil {
-		log.Errorln("[Mailer] failed to send mail")
-		log.V(10).Infoln("[Mailer] mail", c)
 		return err
 	}
 	return nil

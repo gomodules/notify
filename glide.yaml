@@ -1,6 +1,5 @@
 package: github.com/appscode/go-notify
 import:
-- package: github.com/appscode/log
 - package: github.com/jaytaylor/html2text
 - package: github.com/kelseyhightower/envconfig
   version: v1.2.0
