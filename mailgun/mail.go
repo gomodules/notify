@@ -43,8 +43,8 @@ func (m *mailer) WithBody(body string) {
 	m.body = body
 }
 
-func (m *mailer) To(to string, tos ...string) {
-	m.to = append(tos, to)
+func (m *mailer) To(to string, cc ...string) {
+	m.to = append([]string{to}, cc...)
 }
 
 func (m *mailer) Send() error {
