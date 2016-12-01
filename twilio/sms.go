@@ -19,6 +19,7 @@ type Options struct {
 type client struct {
 	opt Options
 	v   url.Values
+	to  []string
 }
 
 var _ notify.BySMS = &client{}
@@ -47,22 +48,28 @@ func (c *client) WithBody(body string) {
 	c.v.Set("Body", body)
 }
 
-func (c *client) To(to string) {
-	c.v.Set("To", to)
+func (c *client) To(to string, cc ...string) {
+	c.to = append([]string{to}, cc...)
 }
 
 func (c *client) Send() error {
 	h := &http.Client{Timeout: time.Second * 10}
 
-	urlStr := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%v/Messages.json", c.opt.AccountSid)
-	req, err := http.NewRequest("POST", urlStr, strings.NewReader(c.v.Encode()))
-	if err != nil {
-		return err
-	}
+	for _, receiver := range c.to {
+		c.v.Set("To", receiver)
+		urlStr := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%v/Messages.json", c.opt.AccountSid)
+		req, err := http.NewRequest("POST", urlStr, strings.NewReader(c.v.Encode()))
+		if err != nil {
+			return err
+		}
 
-	req.SetBasicAuth(c.opt.AccountSid, c.opt.AuthToken)
-	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-	_, err = h.Do(req)
-	return err
+		req.SetBasicAuth(c.opt.AccountSid, c.opt.AuthToken)
+		req.Header.Add("Accept", "application/json")
+		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+		_, err = h.Do(req)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }

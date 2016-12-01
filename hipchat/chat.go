@@ -12,7 +12,7 @@ type Options struct {
 
 type client struct {
 	opt  Options
-	to   string
+	to   []string
 	body string
 }
 
@@ -35,13 +35,18 @@ func (c *client) WithBody(body string) {
 	c.body = body
 }
 
-func (c *client) To(to string) {
-	c.to = to
+func (c *client) To(to string, cc ...string) {
+	c.to = append([]string{to}, cc...)
 }
 
 func (c *client) Send() error {
 	h := hipchat.NewClient(c.opt.AuthToken)
 
-	_, err := h.Room.Notification(c.to, &hipchat.NotificationRequest{Message: c.body})
-	return err
+	for _, room := range c.to {
+		_, err := h.Room.Notification(room, &hipchat.NotificationRequest{Message: c.body})
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
