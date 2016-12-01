@@ -11,6 +11,8 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
+const Uid = "twilio"
+
 type Options struct {
 	AccountSid string // TWILIO_ACCOUNT_SID
 	AuthToken  string // TWILIO_AUTH_TOKEN
@@ -33,7 +35,7 @@ func New(opt Options) *client {
 
 func Default() (*client, error) {
 	var opt Options
-	err := envconfig.Process("twilio", &opt)
+	err := envconfig.Process(Uid, &opt)
 	if err != nil {
 		return nil, err
 	}

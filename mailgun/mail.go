@@ -8,6 +8,8 @@ import (
 	mailgun "github.com/mailgun/mailgun-go"
 )
 
+const Uid = "mailgun"
+
 type Options struct {
 	Domain       string // MAILGUN_DOMAIN
 	ApiKey       string // MAILGUN_API_KEY
@@ -35,7 +37,7 @@ func New(opt Options) *client {
 
 func Default() (*client, error) {
 	var opt Options
-	err := envconfig.Process("mailgun", &opt)
+	err := envconfig.Process(Uid, &opt)
 	if err != nil {
 		return nil, err
 	}

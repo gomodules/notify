@@ -6,6 +6,8 @@ import (
 	"github.com/tbruyelle/hipchat-go/hipchat"
 )
 
+const Uid = "hipchat"
+
 type Options struct {
 	AuthToken string // HIPCHAT_AUTH_TOKEN
 }
@@ -24,7 +26,7 @@ func New(opt Options) *client {
 
 func Default() (*client, error) {
 	var opt Options
-	err := envconfig.Process("hipchat", &opt)
+	err := envconfig.Process(Uid, &opt)
 	if err != nil {
 		return nil, err
 	}

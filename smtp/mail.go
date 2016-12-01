@@ -9,6 +9,8 @@ import (
 	gomail "gopkg.in/gomail.v2"
 )
 
+const Uid = "smtp"
+
 type Options struct {
 	Host               string // SMTP_HOST
 	Port               int    // SMTP_PORT
@@ -35,7 +37,7 @@ func New(opt Options) *client {
 
 func Default() (*client, error) {
 	var opt Options
-	err := envconfig.Process("smtp", &opt)
+	err := envconfig.Process(Uid, &opt)
 	if err != nil {
 		return nil, err
 	}
