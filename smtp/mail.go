@@ -1,6 +1,8 @@
 package smtp
 
 import (
+	"crypto/tls"
+
 	"github.com/appscode/go-notify"
 	h2t "github.com/jaytaylor/html2text"
 	"github.com/kelseyhightower/envconfig"
@@ -9,7 +11,7 @@ import (
 
 type Options struct {
 	Host               string // SMTP_HOST
-	Port               int    //SMTP_PORT
+	Port               int    // SMTP_PORT
 	InsecureSkipVerify bool   // SMTP_INSECURE_SKIP_VERIFY
 	Username           string // SMTP_USERNAME
 	Password           string // SMTP_PASSWORD
@@ -66,14 +68,16 @@ func (c *client) Send() error {
 		c.mail.SetBody("text/plain", c.body)
 	}
 
+	var d *gomail.Dialer
 	if c.opt.Username == "" && c.opt.Password == "" {
-		d := gomail.NewDialer(c.opt.Host, c.opt.Port, c.opt.Username, c.opt.Password)
-		return d.DialAndSend(c.mail)
+		d = gomail.NewDialer(c.opt.Host, c.opt.Port, c.opt.Username, c.opt.Password)
 	} else {
-		d := gomail.Dialer{Host: c.opt.Host, Port: c.opt.Port}
-		return d.DialAndSend(c.mail)
+		d = &gomail.Dialer{Host: c.opt.Host, Port: c.opt.Port}
 	}
-	return nil
+	if c.opt.InsecureSkipVerify {
+		d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+	}
+	return d.DialAndSend(c.mail)
 }
 
 func (c *client) SendHtml() error {
