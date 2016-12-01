@@ -1,10 +1,10 @@
-package go_notifier
+package notify
 
 type ByEmail interface {
-	From(from string) ByEmail
-	WithSubject(subject string) ByEmail
-	WithBody(body string) ByEmail
-	To(to string, tos ...string) ByEmail
+	From(from string)
+	WithSubject(subject string)
+	WithBody(body string)
+	To(to string, tos ...string)
 	Send() error
 	SendHtml() error
 }

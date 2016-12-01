@@ -1,6 +1,7 @@
 package mailgun
 
 import (
+	notify "github.com/appscode/go-notify"
 	"github.com/appscode/log"
 	h2t "github.com/jaytaylor/html2text"
 	mailgun "github.com/mailgun/mailgun-go"
@@ -23,24 +24,26 @@ type mailer struct {
 	mg mailgun.Mailgun
 }
 
+var _ notify.ByEmail = &mailer{}
+
 func New(opt Options) *mailer {
 	return &mailer{
 		mg: mailgun.NewMailgun(opt.Domain, opt.ApiKey, opt.PublicApiKey),
 	}
 }
 
-func (m *mailer) From(from string) *mailer {
+func (m *mailer) From(from string) {
 	m.from = from
 }
 
-func (m *mailer) WithSubject(subject string) *mailer {
+func (m *mailer) WithSubject(subject string) {
 	m.subject = subject
 }
-func (m *mailer) WithBody(body string) *mailer {
+func (m *mailer) WithBody(body string) {
 	m.body = body
 }
 
-func (m *mailer) To(to string, tos ...string) *mailer {
+func (m *mailer) To(to string, tos ...string) {
 	m.to = append(tos, to)
 }
 
