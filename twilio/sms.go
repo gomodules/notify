@@ -52,11 +52,10 @@ func (c *client) To(to string) {
 }
 
 func (c *client) Send() error {
-	urlStr := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%v/Messages.json", c.opt.AccountSid)
-
-	rb := *strings.NewReader(c.v.Encode())
 	h := &http.Client{Timeout: time.Second * 10}
-	req, err := http.NewRequest("POST", urlStr, &rb)
+
+	urlStr := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%v/Messages.json", c.opt.AccountSid)
+	req, err := http.NewRequest("POST", urlStr, strings.NewReader(c.v.Encode()))
 	if err != nil {
 		return err
 	}
