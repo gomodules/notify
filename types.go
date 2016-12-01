@@ -8,3 +8,10 @@ type ByEmail interface {
 	Send() error
 	SendHtml() error
 }
+
+type BySMS interface {
+	From(from string)
+	WithBody(body string)
+	To(to string)
+	Send() error
+}

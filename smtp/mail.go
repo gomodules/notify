@@ -13,59 +13,59 @@ type Options struct {
 	Username, Password string
 }
 
-type mailer struct {
+type client struct {
 	opt  Options
 	mail *gomail.Message
 	body string
 	html bool
 }
 
-var _ notify.ByEmail = &mailer{}
+var _ notify.ByEmail = &client{}
 
-func New(opt Options) *mailer {
-	return &mailer{
+func New(opt Options) *client {
+	return &client{
 		opt:  opt,
 		mail: gomail.NewMessage(),
 	}
 }
 
-func (m *mailer) From(from string) {
-	m.mail.SetHeader("From", from)
+func (c *client) From(from string) {
+	c.mail.SetHeader("From", from)
 }
 
-func (m *mailer) WithSubject(subject string) {
-	m.mail.SetHeader("Subject", subject)
+func (c *client) WithSubject(subject string) {
+	c.mail.SetHeader("Subject", subject)
 }
-func (m *mailer) WithBody(body string) {
-	m.body = body
+func (c *client) WithBody(body string) {
+	c.body = body
 }
 
-func (m *mailer) To(to string, cc ...string) {
+func (c *client) To(to string, cc ...string) {
 	tos := append([]string{to}, cc...)
-	m.mail.SetHeader("To", tos...)
+	c.mail.SetHeader("To", tos...)
 }
 
-func (m *mailer) Send() error {
-	if m.html {
-		m.mail.SetBody("text/html", m.body)
-		if t, err := h2t.FromString(m.body); err == nil {
-			m.mail.AddAlternative("text/plain", t)
+func (c *client) Send() error {
+	if c.html {
+		c.mail.SetBody("text/html", c.body)
+		if t, err := h2t.FromString(c.body); err == nil {
+			c.mail.AddAlternative("text/plain", t)
 		}
 	} else {
-		m.mail.SetBody("text/plain", m.body)
+		c.mail.SetBody("text/plain", c.body)
 	}
 
-	if m.opt.Username == "" && m.opt.Password == "" {
-		d := gomail.NewDialer(m.opt.Host, m.opt.Port, m.opt.Username, m.opt.Password)
-		return d.DialAndSend(m.mail)
+	if c.opt.Username == "" && c.opt.Password == "" {
+		d := gomail.NewDialer(c.opt.Host, c.opt.Port, c.opt.Username, c.opt.Password)
+		return d.DialAndSend(c.mail)
 	} else {
-		d := gomail.Dialer{Host: m.opt.Host, Port: m.opt.Port}
-		return d.DialAndSend(m.mail)
+		d := gomail.Dialer{Host: c.opt.Host, Port: c.opt.Port}
+		return d.DialAndSend(c.mail)
 	}
 	return nil
 }
 
-func (m *mailer) SendHtml() error {
-	m.html = true
-	return m.Send()
+func (c *client) SendHtml() error {
+	c.html = true
+	return c.Send()
 }

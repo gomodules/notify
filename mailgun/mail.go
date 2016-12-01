@@ -13,7 +13,7 @@ type Options struct {
 	PublicApiKey string
 }
 
-type mailer struct {
+type client struct {
 	to      []string
 	from    string
 	subject string
@@ -24,57 +24,58 @@ type mailer struct {
 	mg mailgun.Mailgun
 }
 
-var _ notify.ByEmail = &mailer{}
+var _ notify.ByEmail = &client{}
 
-func New(opt Options) *mailer {
-	return &mailer{
+func New(opt Options) *client {
+	return &client{
 		mg: mailgun.NewMailgun(opt.Domain, opt.ApiKey, opt.PublicApiKey),
 	}
 }
 
-func (m *mailer) From(from string) {
-	m.from = from
+func (c *client) From(from string) {
+	c.from = from
 }
 
-func (m *mailer) WithSubject(subject string) {
-	m.subject = subject
-}
-func (m *mailer) WithBody(body string) {
-	m.body = body
+func (c *client) WithSubject(subject string) {
+	c.subject = subject
 }
 
-func (m *mailer) To(to string, cc ...string) {
-	m.to = append([]string{to}, cc...)
+func (c *client) WithBody(body string) {
+	c.body = body
 }
 
-func (m *mailer) Send() error {
-	text := m.body
-	if m.html {
-		if t, err := h2t.FromString(m.body); err == nil {
+func (c *client) To(to string, cc ...string) {
+	c.to = append([]string{to}, cc...)
+}
+
+func (c *client) Send() error {
+	text := c.body
+	if c.html {
+		if t, err := h2t.FromString(c.body); err == nil {
 			text = t
 		}
 	}
-	msg := m.mg.NewMessage(m.from, m.subject, text, m.to...)
-	if m.html {
-		msg.SetHtml(m.body)
+	msg := c.mg.NewMessage(c.from, c.subject, text, c.to...)
+	if c.html {
+		msg.SetHtml(c.body)
 	}
-	if m.tag != "" {
-		msg.AddTag(m.tag)
+	if c.tag != "" {
+		msg.AddTag(c.tag)
 	}
 	msg.SetTracking(true)
 	msg.SetTrackingClicks(true)
 	msg.SetTrackingOpens(true)
-	response, id, err := m.mg.Send(msg)
+	response, id, err := c.mg.Send(msg)
 	log.Infof("Mailgun server response[%v]: %v\n", id, response)
 	if err != nil {
 		log.Errorln("[Mailer] failed to send mail")
-		log.V(10).Infoln("[Mailer] mail", m)
+		log.V(10).Infoln("[Mailer] mail", c)
 		return err
 	}
 	return nil
 }
 
-func (m *mailer) SendHtml() error {
-	m.html = true
-	return m.Send()
+func (c *client) SendHtml() error {
+	c.html = true
+	return c.Send()
 }
