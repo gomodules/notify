@@ -1,0 +1,13 @@
+package: github.com/appscode/go-notify
+import:
+- package: github.com/appscode/log
+- package: github.com/jaytaylor/html2text
+- package: github.com/kelseyhightower/envconfig
+  version: v1.2.0
+- package: github.com/mailgun/mailgun-go
+  version: v1.0.2
+- package: github.com/tbruyelle/hipchat-go
+  version: v1.2
+  subpackages:
+  - hipchat
+- package: gopkg.in/gomail.v2
