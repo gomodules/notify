@@ -7,7 +7,7 @@ import (
 )
 
 type Options struct {
-	AuthToken string // HIPCHAT_ACCOUNT_TOKEN
+	AuthToken string // HIPCHAT_AUTH_TOKEN
 }
 
 type client struct {

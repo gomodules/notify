@@ -13,7 +13,7 @@ import (
 
 type Options struct {
 	AccountSid string // TWILIO_ACCOUNT_SID
-	AuthToken  string // TWILIO_ACCOUNT_TOKEN
+	AuthToken  string // TWILIO_AUTH_TOKEN
 }
 
 type client struct {
