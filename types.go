@@ -15,3 +15,9 @@ type BySMS interface {
 	To(to string)
 	Send() error
 }
+
+type ByChat interface {
+	WithBody(body string)
+	To(to string)
+	Send() error
+}
