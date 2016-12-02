@@ -58,6 +58,10 @@ func (c *client) WithBody(body string) notify.ByEmail {
 	return c
 }
 
+func (c *client) WithTag(tag string) notify.ByEmail {
+	return c
+}
+
 func (c *client) To(to string, cc ...string) notify.ByEmail {
 	tos := append([]string{to}, cc...)
 	c.mail.SetHeader("To", tos...)
