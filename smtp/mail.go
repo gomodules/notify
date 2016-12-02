@@ -17,6 +17,7 @@ type Options struct {
 	InsecureSkipVerify bool   // SMTP_INSECURE_SKIP_VERIFY
 	Username           string // SMTP_USERNAME
 	Password           string // SMTP_PASSWORD
+	From               string // SMTP_FROM
 }
 
 type client struct {
@@ -29,9 +30,11 @@ type client struct {
 var _ notify.ByEmail = &client{}
 
 func New(opt Options) *client {
+	mail := gomail.NewMessage()
+	mail.SetHeader("From", opt.From)
 	return &client{
 		opt:  opt,
-		mail: gomail.NewMessage(),
+		mail: mail,
 	}
 }
 

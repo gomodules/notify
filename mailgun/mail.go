@@ -13,6 +13,7 @@ type Options struct {
 	Domain       string // MAILGUN_DOMAIN
 	ApiKey       string // MAILGUN_API_KEY
 	PublicApiKey string // MAILGUN_PUBLIC_API_KEY
+	From         string // MAILGUN_FROM
 }
 
 type client struct {
@@ -30,7 +31,8 @@ var _ notify.ByEmail = &client{}
 
 func New(opt Options) *client {
 	return &client{
-		mg: mailgun.NewMailgun(opt.Domain, opt.ApiKey, opt.PublicApiKey),
+		mg:   mailgun.NewMailgun(opt.Domain, opt.ApiKey, opt.PublicApiKey),
+		from: opt.From,
 	}
 }
 
