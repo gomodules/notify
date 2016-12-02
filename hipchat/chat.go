@@ -33,12 +33,14 @@ func Default() (*client, error) {
 	return New(opt), nil
 }
 
-func (c *client) WithBody(body string) {
+func (c *client) WithBody(body string) notify.ByChat {
 	c.body = body
+	return c
 }
 
-func (c *client) To(to string, cc ...string) {
+func (c *client) To(to string, cc ...string) notify.ByChat {
 	c.to = append([]string{to}, cc...)
+	return c
 }
 
 func (c *client) Send() error {

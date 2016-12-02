@@ -45,16 +45,19 @@ func Default() (*client, error) {
 	return New(opt), nil
 }
 
-func (c *client) From(from string) {
+func (c *client) From(from string) notify.BySMS {
 	c.v.Set("From", from)
+	return c
 }
 
-func (c *client) WithBody(body string) {
+func (c *client) WithBody(body string) notify.BySMS {
 	c.v.Set("Body", body)
+	return c
 }
 
-func (c *client) To(to string, cc ...string) {
+func (c *client) To(to string, cc ...string) notify.BySMS {
 	c.to = append([]string{to}, cc...)
+	return c
 }
 
 func (c *client) Send() error {
