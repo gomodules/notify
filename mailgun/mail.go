@@ -76,11 +76,8 @@ func (c *client) Send() error {
 	msg.SetTracking(true)
 	msg.SetTrackingClicks(true)
 	msg.SetTrackingOpens(true)
-	response, id, err := c.mg.Send(msg)
-	if err != nil {
-		return err
-	}
-	return nil
+	_, _, err := c.mg.Send(msg)
+	return err
 }
 
 func (c *client) SendHtml() error {

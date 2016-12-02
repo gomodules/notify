@@ -16,6 +16,7 @@ const Uid = "twilio"
 type Options struct {
 	AccountSid string // TWILIO_ACCOUNT_SID
 	AuthToken  string // TWILIO_AUTH_TOKEN
+	From       string // TWILIO_FROM
 }
 
 type client struct {
@@ -27,9 +28,11 @@ type client struct {
 var _ notify.BySMS = &client{}
 
 func New(opt Options) *client {
+	v := url.Values{}
+	v.Set("From", opt.From)
 	return &client{
 		opt: opt,
-		v:   url.Values{},
+		v:   v,
 	}
 }
 
