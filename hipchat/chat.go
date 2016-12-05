@@ -9,8 +9,8 @@ import (
 const Uid = "hipchat"
 
 type Options struct {
-	AuthToken string   `required:"true" envconfig:"AUTH_TOKEN"`
-	To        []string `required:"true" envconfig:"TO"`
+	AuthToken string   `envconfig:"AUTH_TOKEN" required:"true"`
+	To        []string `envconfig:"TO" required:"true"`
 }
 
 type client struct {

@@ -11,13 +11,13 @@ import (
 const Uid = "smtp"
 
 type Options struct {
-	Host               string   `required:"true" envconfig:"HOST"`
-	Port               int      `required:"true" envconfig:"PORT"`
+	Host               string   `envconfig:"HOST" required:"true"`
+	Port               int      `envconfig:"PORT" required:"true"`
 	InsecureSkipVerify bool     `envconfig:"INSECURE_SKIP_VERIFY"`
-	Username           string   `required:"true envconfig:"USERNAME"`
-	Password           string   `required:"true" envconfig:"PASSWORD"`
-	From               string   `required:"true" envconfig:"FROM"`
-	To                 []string `required:"true" envconfig:"TO"`
+	Username           string   `envconfig:"USERNAME" required:"true"`
+	Password           string   `envconfig:"PASSWORD" required:"true"`
+	From               string   `envconfig:"FROM" required:"true"`
+	To                 []string `envconfig:"TO" required:"true"`
 }
 
 type client struct {

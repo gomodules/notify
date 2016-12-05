@@ -14,10 +14,10 @@ import (
 const Uid = "twilio"
 
 type Options struct {
-	AccountSid string   `required:"true" envconfig:"ACCOUNT_SID"`
-	AuthToken  string   `required:"true" envconfig:"AUTH_TOKEN"`
-	From       string   `required:"true" envconfig:"FROM"`
-	To         []string `required:"true" envconfig:"TO"`
+	AccountSid string   `envconfig:"ACCOUNT_SID" required:"true"`
+	AuthToken  string   `envconfig:"AUTH_TOKEN" required:"true"`
+	From       string   `envconfig:"FROM" required:"true"`
+	To         []string `envconfig:"TO" required:"true"`
 }
 
 type client struct {
