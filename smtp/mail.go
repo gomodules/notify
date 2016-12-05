@@ -11,12 +11,13 @@ import (
 const Uid = "smtp"
 
 type Options struct {
-	Host               string // SMTP_HOST
-	Port               int    // SMTP_PORT
-	InsecureSkipVerify bool   // SMTP_INSECURE_SKIP_VERIFY
-	Username           string // SMTP_USERNAME
-	Password           string // SMTP_PASSWORD
-	From               string // SMTP_FROM
+	Host               string   `required:"true" envconfig:"HOST"`
+	Port               int      `required:"true" envconfig:"PORT"`
+	InsecureSkipVerify bool     `envconfig:"INSECURE_SKIP_VERIFY"`
+	Username           string   `required:"true envconfig:"USERNAME"`
+	Password           string   `required:"true" envconfig:"PASSWORD"`
+	From               string   `required:"true" envconfig:"FROM"`
+	To                 []string `required:"true" envconfig:"TO"`
 }
 
 type client struct {
@@ -31,6 +32,7 @@ var _ notify.ByEmail = &client{}
 func New(opt Options) *client {
 	mail := gomail.NewMessage()
 	mail.SetHeader("From", opt.From)
+	mail.SetHeader("To", opt.To...)
 	return &client{
 		opt:  opt,
 		mail: mail,
@@ -78,7 +80,7 @@ func (c *client) Send() error {
 	}
 
 	var d *gomail.Dialer
-	if c.opt.Username == "" && c.opt.Password == "" {
+	if c.opt.Username != "" && c.opt.Password != "" {
 		d = gomail.NewDialer(c.opt.Host, c.opt.Port, c.opt.Username, c.opt.Password)
 	} else {
 		d = &gomail.Dialer{Host: c.opt.Host, Port: c.opt.Port}

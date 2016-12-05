@@ -10,10 +10,11 @@ import (
 const Uid = "mailgun"
 
 type Options struct {
-	Domain       string // MAILGUN_DOMAIN
-	ApiKey       string // MAILGUN_API_KEY
-	PublicApiKey string // MAILGUN_PUBLIC_API_KEY
-	From         string // MAILGUN_FROM
+	Domain       string   `required:"true" envconfig:"DOMAIN"`
+	ApiKey       string   `required:"true" envconfig:"API_KEY"`
+	PublicApiKey string   `envconfig:"PUBLIC_API_KEY"`
+	From         string   `required:"true" envconfig:"FROM"`
+	To           []string `required:"true" envconfig:"TO"`
 }
 
 type client struct {
@@ -33,6 +34,7 @@ func New(opt Options) *client {
 	return &client{
 		mg:   mailgun.NewMailgun(opt.Domain, opt.ApiKey, opt.PublicApiKey),
 		from: opt.From,
+		to:   opt.To,
 	}
 }
 
