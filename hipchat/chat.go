@@ -9,7 +9,8 @@ import (
 const Uid = "hipchat"
 
 type Options struct {
-	AuthToken string // HIPCHAT_AUTH_TOKEN
+	AuthToken string   `envconfig:"AUTH_TOKEN" required:"true"`
+	To        []string `envconfig:"TO" required:"true"`
 }
 
 type client struct {
@@ -21,7 +22,10 @@ type client struct {
 var _ notify.ByChat = &client{}
 
 func New(opt Options) *client {
-	return &client{opt: opt}
+	return &client{
+		opt: opt,
+		to:  opt.To,
+	}
 }
 
 func Default() (*client, error) {

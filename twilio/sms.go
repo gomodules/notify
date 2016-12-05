@@ -14,9 +14,10 @@ import (
 const Uid = "twilio"
 
 type Options struct {
-	AccountSid string // TWILIO_ACCOUNT_SID
-	AuthToken  string // TWILIO_AUTH_TOKEN
-	From       string // TWILIO_FROM
+	AccountSid string   `envconfig:"ACCOUNT_SID" required:"true"`
+	AuthToken  string   `envconfig:"AUTH_TOKEN" required:"true"`
+	From       string   `envconfig:"FROM" required:"true"`
+	To         []string `envconfig:"TO" required:"true"`
 }
 
 type client struct {
@@ -33,6 +34,7 @@ func New(opt Options) *client {
 	return &client{
 		opt: opt,
 		v:   v,
+		to:  opt.To,
 	}
 }
 
