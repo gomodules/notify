@@ -4,7 +4,6 @@ import (
 	"crypto/tls"
 
 	"github.com/appscode/go-notify"
-	h2t "github.com/jaytaylor/html2text"
 	"github.com/kelseyhightower/envconfig"
 	gomail "gopkg.in/gomail.v2"
 )
@@ -74,9 +73,6 @@ func (c *client) To(to string, cc ...string) notify.ByEmail {
 func (c *client) Send() error {
 	if c.html {
 		c.mail.SetBody("text/html", c.body)
-		if t, err := h2t.FromString(c.body); err == nil {
-			c.mail.AddAlternative("text/plain", t)
-		}
 	} else {
 		c.mail.SetBody("text/plain", c.body)
 	}
