@@ -7,6 +7,5 @@ import:
   version: v1.0.2
 - package: github.com/tbruyelle/hipchat-go
   version: v1.2
-  subpackages:
-  - hipchat
 - package: gopkg.in/gomail.v2
+- package: github.com/nlopes/slack
