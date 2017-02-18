@@ -14,4 +14,4 @@ Send notification via Email, SMS, Chat etc.
 ### Supported Chat Services
 
 - [x] Hipchat
-- [ ] Slack
+- [x] Slack
