@@ -10,21 +10,21 @@ const Uid = "slack"
 
 type Options struct {
 	AuthToken string   `envconfig:"AUTH_TOKEN" required:"true"`
-	To        []string `envconfig:"TO" required:"true"`
+	Channel   []string `envconfig:"CHANNEL" required:"true"`
 }
 
 type client struct {
-	opt  Options
-	to   []string
-	body string
+	opt     Options
+	channel []string
+	body    string
 }
 
 var _ notify.ByChat = &client{}
 
 func New(opt Options) *client {
 	return &client{
-		opt: opt,
-		to:  opt.To,
+		opt:     opt,
+		channel: opt.Channel,
 	}
 }
 
@@ -43,13 +43,13 @@ func (c *client) WithBody(body string) notify.ByChat {
 }
 
 func (c *client) To(to string, cc ...string) notify.ByChat {
-	c.to = append([]string{to}, cc...)
+	c.channel = append([]string{to}, cc...)
 	return c
 }
 
 func (c *client) Send() error {
 	s := slack.New(c.opt.AuthToken)
-	for _, channel := range c.to {
+	for _, channel := range c.channel {
 		if _, _, err := s.PostMessage(channel, c.body, slack.PostMessageParameters{}); err != nil {
 			return err
 		}
