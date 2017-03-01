@@ -9,7 +9,7 @@ Send notification via Email, SMS, Chat etc.
 
 ### Supported SMS Services
 - [x] Twilio
-- [ ] plivo.com
+- [X] plivo.com
 
 ### Supported Chat Services
 
