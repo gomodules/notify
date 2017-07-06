@@ -61,17 +61,17 @@ func (c client) WithSubject(subject string) notify.ByEmail {
 	return &c
 }
 
-func (c client) WithBody(body string) notify.ByEmail {
-	c.body = body
-	return &c
-}
-
 func (c client) WithTag(tag string) notify.ByEmail {
 	return &c
 }
 
 func (c client) To(to string, cc ...string) notify.ByEmail {
 	c.opt.To = append([]string{to}, cc...)
+	return &c
+}
+
+func (c client) WithBody(body string) notify.Message {
+	c.body = body
 	return &c
 }
 

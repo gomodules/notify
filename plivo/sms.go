@@ -58,13 +58,13 @@ func (c client) From(from string) notify.BySMS {
 	return &c
 }
 
-func (c client) WithBody(body string) notify.BySMS {
-	c.body = body
+func (c client) To(to string, cc ...string) notify.BySMS {
+	c.opt.To = append([]string{to}, cc...)
 	return &c
 }
 
-func (c client) To(to string, cc ...string) notify.BySMS {
-	c.opt.To = append([]string{to}, cc...)
+func (c client) WithBody(body string) notify.Message {
+	c.body = body
 	return &c
 }
 

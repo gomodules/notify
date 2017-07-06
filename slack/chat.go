@@ -46,13 +46,13 @@ func Load(loader func(string) (string, bool)) (*client, error) {
 	return New(opt), nil
 }
 
-func (c client) WithBody(body string) notify.ByChat {
-	c.body = body
+func (c client) To(to string, cc ...string) notify.ByChat {
+	c.channel = append([]string{to}, cc...)
 	return &c
 }
 
-func (c client) To(to string, cc ...string) notify.ByChat {
-	c.channel = append([]string{to}, cc...)
+func (c client) WithBody(body string) notify.Message {
+	c.body = body
 	return &c
 }
 
