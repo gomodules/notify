@@ -102,7 +102,7 @@ func (c *client) Send() error {
 	return err
 }
 
-func (c client) SendHtml() error {
+func (c client) AsHtml() notify.ByEmail {
 	c.html = true
-	return c.Send()
+	return &c
 }

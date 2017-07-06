@@ -5,7 +5,7 @@ type ByEmail interface {
 	WithSubject(subject string) ByEmail
 	WithTag(tag string) ByEmail
 	To(to string, cc ...string) ByEmail
-	SendHtml() error
+	AsHtml() ByEmail
 	Message
 }
 
