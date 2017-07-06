@@ -53,6 +53,10 @@ func Load(loader func(string) (string, bool)) (*client, error) {
 	return New(opt), nil
 }
 
+func (c client) UID() string {
+	return UID
+}
+
 func (c client) From(from string) notify.BySMS {
 	c.opt.From = from
 	return &c
