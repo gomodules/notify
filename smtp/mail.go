@@ -3,8 +3,8 @@ package smtp
 import (
 	"crypto/tls"
 
+	"github.com/appscode/envconfig"
 	"github.com/appscode/go-notify"
-	"github.com/kelseyhightower/envconfig"
 	gomail "gopkg.in/gomail.v2"
 )
 
@@ -36,6 +36,15 @@ func New(opt Options) *client {
 func Default() (*client, error) {
 	var opt Options
 	err := envconfig.Process(UID, &opt)
+	if err != nil {
+		return nil, err
+	}
+	return New(opt), nil
+}
+
+func Load(loader func(string) (string, bool)) (*client, error) {
+	var opt Options
+	err := envconfig.Load(UID, &opt, loader)
 	if err != nil {
 		return nil, err
 	}

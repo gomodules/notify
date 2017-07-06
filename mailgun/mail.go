@@ -1,9 +1,9 @@
 package mailgun
 
 import (
+	"github.com/appscode/envconfig"
 	notify "github.com/appscode/go-notify"
 	h2t "github.com/jaytaylor/html2text"
-	"github.com/kelseyhightower/envconfig"
 	mailgun "github.com/mailgun/mailgun-go"
 )
 
@@ -41,6 +41,15 @@ func New(opt Options) *client {
 func Default() (*client, error) {
 	var opt Options
 	err := envconfig.Process(UID, &opt)
+	if err != nil {
+		return nil, err
+	}
+	return New(opt), nil
+}
+
+func Load(loader func(string) (string, bool)) (*client, error) {
+	var opt Options
+	err := envconfig.Load(UID, &opt, loader)
 	if err != nil {
 		return nil, err
 	}
