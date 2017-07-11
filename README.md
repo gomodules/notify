@@ -17,3 +17,6 @@ Send notification via Email, SMS, Chat etc.
 
 - [x] Hipchat
 - [x] Slack
+
+### Debug
+- [x] Log to StdOut
