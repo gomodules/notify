@@ -7,12 +7,12 @@ import (
 
 	"github.com/appscode/envconfig"
 	"github.com/appscode/go-notify/hipchat"
+	"github.com/appscode/go-notify/log"
 	"github.com/appscode/go-notify/mailgun"
 	"github.com/appscode/go-notify/plivo"
 	"github.com/appscode/go-notify/slack"
 	"github.com/appscode/go-notify/smtp"
 	"github.com/appscode/go-notify/twilio"
-	"github.com/appscode/go-notify/stdout"
 )
 
 const (
@@ -37,8 +37,8 @@ func Default() (interface{}, error) {
 		return hipchat.Default()
 	case slack.UID:
 		return slack.Default()
-	case stdout.UID:
-		return stdout.Default()
+	case log.UID:
+		return log.Default()
 	}
 	return nil, fmt.Errorf("Unknown notifier %s", via)
 }
@@ -61,8 +61,8 @@ func Load(loader envconfig.LoaderFunc) (interface{}, error) {
 		return hipchat.Load(loader)
 	case slack.UID:
 		return slack.Load(loader)
-	case stdout.UID:
-		return stdout.Load(loader)
+	case log.UID:
+		return log.Load(loader)
 	}
 	return nil, fmt.Errorf("Unknown notifier %s", via)
 }

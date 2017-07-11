@@ -1,11 +1,11 @@
-package stdout
+package log
 
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/appscode/envconfig"
 	"github.com/appscode/go-notify"
-	"github.com/tbruyelle/hipchat-go/hipchat"
 )
 
 const UID = "stdout"
