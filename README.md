@@ -18,5 +18,8 @@ Send notification via Email, SMS, Chat etc.
 - [x] Hipchat
 - [x] Slack
 
+### Webhook
+- [x] Post via HTTP
+
 ### Debug
 - [x] Log to StdOut

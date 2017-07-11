@@ -13,6 +13,7 @@ import (
 	"github.com/appscode/go-notify/slack"
 	"github.com/appscode/go-notify/smtp"
 	"github.com/appscode/go-notify/twilio"
+	"github.com/appscode/go-notify/webhook"
 )
 
 const (
@@ -39,6 +40,8 @@ func Default() (interface{}, error) {
 		return slack.Default()
 	case log.UID:
 		return log.Default()
+	case webhook.UID:
+		return webhook.Default()
 	}
 	return nil, fmt.Errorf("Unknown notifier %s", via)
 }
@@ -63,6 +66,8 @@ func Load(loader envconfig.LoaderFunc) (interface{}, error) {
 		return slack.Load(loader)
 	case log.UID:
 		return log.Load(loader)
+	case webhook.UID:
+		return webhook.Load(loader)
 	}
 	return nil, fmt.Errorf("Unknown notifier %s", via)
 }
