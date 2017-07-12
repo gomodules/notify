@@ -25,6 +25,10 @@ func Default() (interface{}, error) {
 	if !ok {
 		return nil, errors.New(`"NOTIFY_VIA" is not set.`)
 	}
+	return DefaultVia(via)
+}
+
+func DefaultVia(via string) (interface{}, error) {
 	switch via {
 	case plivo.UID:
 		return plivo.Default()
@@ -51,6 +55,10 @@ func Load(loader envconfig.LoaderFunc) (interface{}, error) {
 	if !ok {
 		return nil, errors.New(`"NOTIFY_VIA" is not set.`)
 	}
+	return LoadVia(via, loader)
+}
+
+func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 	switch via {
 	case plivo.UID:
 		return plivo.Load(loader)
