@@ -5,14 +5,14 @@ GitHub pull requests.  This document outlines some of the conventions on
 development workflow, commit message formatting, contact points and other
 resources to make it easier to get your contribution accepted.
 
-# Certificate of Origin
+## Certificate of Origin
 
 By contributing to this project you agree to the Developer Certificate of
 Origin (DCO). This document was created by the Linux Kernel community and is a
 simple statement that you, as a contributor, have the legal right to make the
 contribution. See the [DCO](DCO) file for details.
 
-# Email and Chat
+## Email and Chat
 
 The project currently uses the general AppsCode Slack channel:
 - [Slack](https://slack.appscode.com/)
