@@ -15,10 +15,7 @@ contribution. See the [DCO](DCO) file for details.
 # Email and Chat
 
 The project currently uses the general AppsCode Slack channel:
-- Slack: #[appscode](https://slack.appscode.com/)
-
-Please avoid emailing maintainers found in the MAINTAINERS file directly. They
-are very busy and read the mailing lists.
+- [Slack](https://slack.appscode.com/)
 
 ## Getting Started
 
