@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/appscode/envconfig"
 	"github.com/appscode/go-notify/hipchat"
@@ -30,7 +31,7 @@ func Default() (interface{}, error) {
 }
 
 func DefaultVia(via string) (interface{}, error) {
-	switch via {
+	switch strings.ToLower(via) {
 	case plivo.UID:
 		return plivo.Default()
 	case twilio.UID:
@@ -62,7 +63,7 @@ func Load(loader envconfig.LoaderFunc) (interface{}, error) {
 }
 
 func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
-	switch via {
+	switch strings.ToLower(via) {
 	case plivo.UID:
 		return plivo.Load(loader)
 	case twilio.UID:
