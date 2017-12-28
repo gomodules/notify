@@ -1,0 +1,43 @@
+hash: c111684c756a994c55f2a5520e409a13c889f02cef214144b7dc211071e625d9
+updated: 2017-12-28T16:19:50.37084624-05:00
+imports:
+- name: github.com/appscode/envconfig
+  version: 183bbe643a2875eaa69c85627ac6b25813983203
+- name: github.com/appscode/go
+  version: f08cee5a2aa53a1ab6d30e4ae11e381d1b265f81
+  subpackages:
+  - net/httpclient
+- name: github.com/cenkalti/backoff
+  version: 61153c768f31ee5f130071d08fc82b85208528de
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
+  subpackages:
+  - query
+- name: github.com/jaytaylor/html2text
+  version: 7cd445abb89c7dbb8220e616a1805fc904cc541b
+- name: github.com/mailgun/mailgun-go
+  version: 369a1fa57ce6fb314e627087b9fff0db5c266c0f
+- name: github.com/mattn/go-runewidth
+  version: 97311d9f7767e3d6f422ea06661bc2c7a19e8a5d
+- name: github.com/nlopes/slack
+  version: ccf0351050c69b08f9c48f3e876f4cd5564463e8
+- name: github.com/olekukonko/tablewriter
+  version: cca8bbc0798408af109aaaa239cbd2634846b340
+- name: github.com/ssor/bom
+  version: 6386211fdfcf24c0bfbdaceafd02849ed9a8a509
+- name: github.com/tbruyelle/hipchat-go
+  version: 749fb9e14beb9995f677c101a754393cecb64b0f
+  subpackages:
+  - hipchat
+- name: golang.org/x/net
+  version: e90d6d0afc4c315a0d87a568ae68577cc15149a0
+  subpackages:
+  - context
+  - html
+  - html/atom
+  - websocket
+- name: gopkg.in/alexcesaro/quotedprintable.v3
+  version: 2caba252f4dc53eaf6b553000885530023f54623
+- name: gopkg.in/gomail.v2
+  version: 81ebce5c23dfd25c6c67194b37d3dd3f338c98b1
+testImports: []
