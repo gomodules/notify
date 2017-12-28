@@ -19,7 +19,7 @@ const UID = "hipchat"
 type Options struct {
 	AuthToken          string   `envconfig:"AUTH_TOKEN" required:"true"`
 	To                 []string `envconfig:"TO"`
-	URL                string   `envconfig:"URL"`
+	BaseURL            string   `envconfig:"BASE_URL"`
 	CACertData         string   `envconfig:"CA_CERT_DATA"`
 	InsecureSkipVerify bool     `envconfig:"INSECURE_SKIP_VERIFY"`
 }
@@ -73,8 +73,8 @@ func (c *client) Send() error {
 	}
 
 	h := hipchat.NewClient(c.opt.AuthToken)
-	if c.opt.URL != "" {
-		u, err := url.Parse(c.opt.URL)
+	if c.opt.BaseURL != "" {
+		u, err := url.Parse(c.opt.BaseURL)
 		if err != nil {
 			return err
 		}
