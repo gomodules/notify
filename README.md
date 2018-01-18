@@ -16,6 +16,7 @@ Send notification via Email, SMS, Chat etc.
 ### Supported Chat Services
 - [x] Hipchat
 - [x] Slack
+- [x] Telegram
 
 ### Supported Push Notification Services
 - [x] Pushover.net
