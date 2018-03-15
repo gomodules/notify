@@ -24,5 +24,4 @@ _testmain.go
 *.prof
 .idea/
 .vscode/
-vendor/
 coverage.txt
