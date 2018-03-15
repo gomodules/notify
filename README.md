@@ -4,8 +4,6 @@
 [![Slack](https://slack.appscode.com/badge.svg)](https://slack.appscode.com)
 [![Twitter](https://img.shields.io/twitter/follow/appscodehq.svg?style=social&logo=twitter&label=Follow)](https://twitter.com/intent/follow?screen_name=AppsCodeHQ)
 
-[Website](https://appscode.com) • [Slack](https://slack.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
-
 # go-notify
 Send notification via Email, SMS, Chat etc.
 
