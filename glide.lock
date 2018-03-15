@@ -1,5 +1,5 @@
 hash: c111684c756a994c55f2a5520e409a13c889f02cef214144b7dc211071e625d9
-updated: 2018-03-15T18:41:31.537229911Z
+updated: 2018-03-15T12:24:43.213100922-07:00
 imports:
 - name: github.com/appscode/envconfig
   version: 183bbe643a2875eaa69c85627ac6b25813983203
@@ -10,7 +10,7 @@ imports:
 - name: github.com/cenkalti/backoff
   version: 61153c768f31ee5f130071d08fc82b85208528de
 - name: github.com/golang/glog
-  version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+  version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - name: github.com/google/go-querystring
   version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
   subpackages:
@@ -24,7 +24,7 @@ imports:
 - name: github.com/mattn/go-runewidth
   version: a9d6d1e4dc51df2130326793d49971f238839169
 - name: github.com/nlopes/slack
-  version: 91c91a11ad0b66b7a690029c56c330ca9f18841b
+  version: 8ab4d0b364ef1e9af5d102531da20d5ec902b6c4
 - name: github.com/olekukonko/tablewriter
   version: cca8bbc0798408af109aaaa239cbd2634846b340
 - name: github.com/ssor/bom
