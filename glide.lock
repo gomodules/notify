@@ -1,10 +1,10 @@
 hash: ff9d420f0389e3e8aee87a60f6eb5b892bcd29b2971ca8b23e3a2d8462efc342
-updated: 2018-04-27T13:13:07.00072874-07:00
+updated: 2018-04-28T08:06:32.28112669-07:00
 imports:
 - name: github.com/appscode/envconfig
   version: 183bbe643a2875eaa69c85627ac6b25813983203
 - name: github.com/appscode/go
-  version: f8f2e1c7d2d10789cdd0540468b487d14421dbf9
+  version: 230e0e4622c682b5d117db8c28a66404ed874ed5
   subpackages:
   - net/httpclient
 - name: github.com/bwmarrin/discordgo
@@ -20,11 +20,11 @@ imports:
 - name: github.com/gorilla/websocket
   version: 6eb6ad425a89d9da7a5549bc6da8f79ba5c17844
 - name: github.com/jaytaylor/html2text
-  version: 190166da35878a77103b951ae035a473531c1fc2
+  version: 64a82a6d140778896f13303121a49d8cb8007034
 - name: github.com/mailgun/mailgun-go
   version: 369a1fa57ce6fb314e627087b9fff0db5c266c0f
 - name: github.com/mattn/go-runewidth
-  version: a9d6d1e4dc51df2130326793d49971f238839169
+  version: d6bea18f789704b5f83375793155289da36a3c7f
 - name: github.com/nlopes/slack
   version: 8ab4d0b364ef1e9af5d102531da20d5ec902b6c4
 - name: github.com/olekukonko/tablewriter
