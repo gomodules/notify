@@ -1,5 +1,5 @@
-hash: c111684c756a994c55f2a5520e409a13c889f02cef214144b7dc211071e625d9
-updated: 2018-03-15T12:24:43.213100922-07:00
+hash: ff9d420f0389e3e8aee87a60f6eb5b892bcd29b2971ca8b23e3a2d8462efc342
+updated: 2018-04-27T13:13:07.00072874-07:00
 imports:
 - name: github.com/appscode/envconfig
   version: 183bbe643a2875eaa69c85627ac6b25813983203
@@ -7,6 +7,8 @@ imports:
   version: f8f2e1c7d2d10789cdd0540468b487d14421dbf9
   subpackages:
   - net/httpclient
+- name: github.com/bwmarrin/discordgo
+  version: 4a33b9bc7c56cfdb9bb244e33e83cb3941fe2bdc
 - name: github.com/cenkalti/backoff
   version: 61153c768f31ee5f130071d08fc82b85208528de
 - name: github.com/golang/glog
@@ -33,6 +35,12 @@ imports:
   version: 749fb9e14beb9995f677c101a754393cecb64b0f
   subpackages:
   - hipchat
+- name: golang.org/x/crypto
+  version: 81e90905daefcd6fd217b62423c0908922eadb30
+  subpackages:
+  - nacl/secretbox
+  - poly1305
+  - salsa20/salsa
 - name: golang.org/x/net
   version: 1c05540f6879653db88113bc4a2b70aec4bd491f
   subpackages:

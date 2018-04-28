@@ -9,3 +9,5 @@ import:
   version: v1.2
 - package: gopkg.in/gomail.v2
 - package: github.com/nlopes/slack
+- package: github.com/bwmarrin/discordgo
+  version: v0.18.0
