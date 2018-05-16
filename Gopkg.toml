@@ -1,0 +1,66 @@
+# Gopkg.toml example
+#
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#   name = "github.com/x/y"
+#   version = "2.4.0"
+#
+# [prune]
+#   non-go = false
+#   go-tests = true
+#   unused-packages = true
+
+
+[[constraint]]
+  branch = "master"
+  name = "bitbucket.org/atlassian/go-stride"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/appscode/envconfig"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/appscode/go"
+
+[[constraint]]
+  name = "github.com/bwmarrin/discordgo"
+  version = "0.18.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/jaytaylor/html2text"
+
+[[constraint]]
+  name = "github.com/mailgun/mailgun-go"
+  version = "1.0.2"
+
+[[constraint]]
+  name = "github.com/nlopes/slack"
+  version = "0.2.0"
+
+[[constraint]]
+  name = "github.com/tbruyelle/hipchat-go"
+  version = "1.2.0"
+
+[[constraint]]
+  branch = "v2"
+  name = "gopkg.in/gomail.v2"
+
+[prune]
+  go-tests = true
+  unused-packages = true
