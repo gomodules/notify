@@ -68,7 +68,6 @@ func (c *client) Send() error {
 	}
 
 	s := stride.New(c.opt.ClientID, c.opt.ClientSecret)
-
 	for _, to := range c.opt.To {
 		conversation, err := s.GetConversationByName(c.opt.CloudID, to)
 		if err != nil {
