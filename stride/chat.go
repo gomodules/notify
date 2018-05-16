@@ -2,6 +2,7 @@ package stride
 
 import (
 	"errors"
+	"net/http"
 
 	"bitbucket.org/atlassian/go-stride/pkg/stride"
 	"github.com/appscode/envconfig"
@@ -14,8 +15,9 @@ const (
 
 type Options struct {
 	CloudID      string   `envconfig:"CLOUD_ID" required:"true"`
-	ClientID     string   `envconfig:"CLIENT_ID" required:"true"`
-	ClientSecret string   `envconfig:"CLIENT_SECRET" required:"true"`
+	RoomToken    string   `envconfig:"ROOM_TOKEN"`
+	ClientID     string   `envconfig:"CLIENT_ID"`
+	ClientSecret string   `envconfig:"CLIENT_SECRET"`
 	To           []string `envconfig:"TO"`
 }
 
@@ -67,13 +69,26 @@ func (c *client) Send() error {
 		return errors.New("missing to")
 	}
 
-	s := stride.New(c.opt.ClientID, c.opt.ClientSecret)
+	if c.opt.RoomToken == "" && (c.opt.ClientID == "" || c.opt.ClientSecret == "") {
+		return errors.New("missing auth")
+	}
+
+	var sc stride.Client
+	if c.opt.RoomToken != "" {
+		if len(c.opt.To) > 1 {
+			return errors.New(`multiple "to" with room_token is not supported`)
+		}
+		sc = stride.NewRoomClient(c.opt.RoomToken, http.DefaultClient)
+	} else {
+		sc = stride.New(c.opt.ClientID, c.opt.ClientSecret)
+	}
+
 	for _, to := range c.opt.To {
-		conversation, err := s.GetConversationByName(c.opt.CloudID, to)
+		conversation, err := sc.GetConversationByName(c.opt.CloudID, to)
 		if err != nil {
 			return err
 		}
-		if err := stride.SendText(s, conversation.CloudID, conversation.ID, c.body); err != nil {
+		if err := stride.SendText(sc, conversation.CloudID, conversation.ID, c.body); err != nil {
 			return err
 		}
 	}
