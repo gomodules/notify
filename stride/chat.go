@@ -73,22 +73,22 @@ func (c *client) Send() error {
 		return errors.New("missing auth")
 	}
 
-	var strideClient stride.Client
+	var sc stride.Client
 	if c.opt.RoomToken != "" {
 		if len(c.opt.To) > 1 {
-			return errors.New(`multiple "to" with room_token not supported`)
+			return errors.New(`multiple "to" with room_token is not supported`)
 		}
-		strideClient = stride.NewRoomClient(c.opt.RoomToken, http.DefaultClient)
+		sc = stride.NewRoomClient(c.opt.RoomToken, http.DefaultClient)
 	} else {
-		strideClient = stride.New(c.opt.ClientID, c.opt.ClientSecret)
+		sc = stride.New(c.opt.ClientID, c.opt.ClientSecret)
 	}
 
 	for _, to := range c.opt.To {
-		conversation, err := strideClient.GetConversationByName(c.opt.CloudID, to)
+		conversation, err := sc.GetConversationByName(c.opt.CloudID, to)
 		if err != nil {
 			return err
 		}
-		if err := stride.SendText(strideClient, conversation.CloudID, conversation.ID, c.body); err != nil {
+		if err := stride.SendText(sc, conversation.CloudID, conversation.ID, c.body); err != nil {
 			return err
 		}
 	}
