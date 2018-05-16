@@ -20,6 +20,7 @@ Send notification via Email, SMS, Chat etc.
 - [x] Slack
 - [x] Telegram
 - [x] Discord
+- [x] Stride
 
 ### Supported Push Notification Services
 - [x] Pushover.net
