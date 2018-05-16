@@ -58,7 +58,7 @@ func DefaultVia(via string) (interface{}, error) {
 	case discord.UID:
 		return discord.Default()
 	case stride.UID:
-		return discord.Default()
+		return stride.Default()
 	}
 	return nil, fmt.Errorf("unknown notifier %s", via)
 }
@@ -96,7 +96,7 @@ func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 	case discord.UID:
 		return discord.Load(loader)
 	case stride.UID:
-		return discord.Load(loader)
+		return stride.Load(loader)
 	}
 	return nil, fmt.Errorf("unknown notifier %s", via)
 }
