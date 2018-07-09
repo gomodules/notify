@@ -1,39 +1,25 @@
 package unified
 
 import (
-	"errors"
 	"fmt"
-	"os"
 	"strings"
 
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify/discord"
-	"github.com/appscode/go-notify/hipchat"
-	"github.com/appscode/go-notify/log"
-	"github.com/appscode/go-notify/mailgun"
-	"github.com/appscode/go-notify/plivo"
-	"github.com/appscode/go-notify/pushover"
-	"github.com/appscode/go-notify/slack"
-	"github.com/appscode/go-notify/smtp"
-	"github.com/appscode/go-notify/stride"
-	"github.com/appscode/go-notify/telegram"
-	"github.com/appscode/go-notify/twilio"
-	"github.com/appscode/go-notify/webhook"
+	"github.com/2tgroup/go-notify/discord"
+	"github.com/2tgroup/go-notify/hipchat"
+	"github.com/2tgroup/go-notify/log"
+	"github.com/2tgroup/go-notify/mailgun"
+	"github.com/2tgroup/go-notify/plivo"
+	"github.com/2tgroup/go-notify/pushover"
+	"github.com/2tgroup/go-notify/slack"
+	"github.com/2tgroup/go-notify/smtp"
+	"github.com/2tgroup/go-notify/stride"
+	"github.com/2tgroup/go-notify/telegram"
+	"github.com/2tgroup/go-notify/twilio"
+	"github.com/2tgroup/go-notify/webhook"
 )
 
-const (
-	NotifyVia = "NOTIFY_VIA"
-)
-
-func Default() (interface{}, error) {
-	via, ok := os.LookupEnv(NotifyVia)
-	if !ok {
-		return nil, errors.New(`"NOTIFY_VIA" is not set.`)
-	}
-	return DefaultVia(via)
-}
-
-func DefaultVia(via string) (interface{}, error) {
+//NotifyVia we push notify via what
+func NotifyVia(via string) (interface{}, error) {
 	switch strings.ToLower(via) {
 	case plivo.UID:
 		return plivo.Default()
@@ -59,44 +45,6 @@ func DefaultVia(via string) (interface{}, error) {
 		return discord.Default()
 	case stride.UID:
 		return stride.Default()
-	}
-	return nil, fmt.Errorf("unknown notifier %s", via)
-}
-
-func Load(loader envconfig.LoaderFunc) (interface{}, error) {
-	via, ok := loader(NotifyVia)
-	if !ok {
-		return nil, errors.New(`"NOTIFY_VIA" is not set.`)
-	}
-	return LoadVia(via, loader)
-}
-
-func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
-	switch strings.ToLower(via) {
-	case plivo.UID:
-		return plivo.Load(loader)
-	case twilio.UID:
-		return twilio.Load(loader)
-	case smtp.UID:
-		return smtp.Load(loader)
-	case mailgun.UID:
-		return mailgun.Load(loader)
-	case hipchat.UID:
-		return hipchat.Load(loader)
-	case slack.UID:
-		return slack.Load(loader)
-	case log.UID:
-		return log.Load(loader)
-	case webhook.UID:
-		return webhook.Load(loader)
-	case pushover.UID:
-		return pushover.Load(loader)
-	case telegram.UID:
-		return telegram.Load(loader)
-	case discord.UID:
-		return discord.Load(loader)
-	case stride.UID:
-		return stride.Load(loader)
 	}
 	return nil, fmt.Errorf("unknown notifier %s", via)
 }
