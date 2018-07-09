@@ -57,6 +57,10 @@ func (c client) WithBody(body string) notify.ByChat {
 	return &c
 }
 
+func (c *client) WithBodyAppend(body string) {
+	c.body = body
+}
+
 func (c client) To(to string, cc ...string) notify.ByChat {
 	c.opt.Channel = append([]string{to}, cc...)
 	return &c
