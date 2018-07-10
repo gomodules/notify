@@ -20,8 +20,9 @@ type Options struct {
 }
 
 type client struct {
-	opt  Options
-	body string
+	opt       Options
+	body      string
+	parseNode string
 }
 
 var _ notify.ByChat = &client{}
@@ -57,6 +58,10 @@ func (c client) WithBody(body string) notify.ByChat {
 	return &c
 }
 
+func (c *client) WithParseNode() {
+	c.parseNode = "HTML"
+}
+
 func (c *client) WithBodyAppend(body string) {
 	c.body = body
 }
@@ -78,10 +83,15 @@ func (c *client) Send() error {
 	}
 
 	u := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", c.opt.Token)
+
 	for _, channel := range c.opt.Channel {
 		data := url.Values{}
-		data.Set("chat_id", channel)
+
+		if c.parseNode != "" {
+			data.Set("parse_mode", c.parseNode)
+		}
 		data.Set("text", c.body)
+		data.Set("chat_id", channel)
 		resp, err := http.PostForm(u, data)
 		if err != nil {
 			return err
@@ -89,6 +99,9 @@ func (c *client) Send() error {
 		if resp.StatusCode != http.StatusOK {
 			var r ErrorResponse
 			err := json.NewDecoder(resp.Body).Decode(&r)
+
+			fmt.Println("ERROR:", r)
+
 			if err == nil && !r.Ok {
 				glog.Warningf("failed to send message to channel %s. Reason: %d - %s", channel, r.ErrorCode, r.Description)
 			}
