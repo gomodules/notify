@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/appscode/envconfig"
-	"github.com/inhuman/go-notify"
+	"github.com/appscode/go-notify"
 	"github.com/tbruyelle/hipchat-go/hipchat"
 )
 

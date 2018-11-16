@@ -3,7 +3,7 @@ package mailgun
 import (
 	"errors"
 	"github.com/appscode/envconfig"
-	notify "github.com/inhuman/go-notify"
+	notify "github.com/appscode/go-notify"
 	h2t "github.com/jaytaylor/html2text"
 	mailgun "github.com/mailgun/mailgun-go"
 )

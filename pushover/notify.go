@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/appscode/envconfig"
-	"github.com/inhuman/go-notify"
+	"github.com/appscode/go-notify"
 )
 
 const (

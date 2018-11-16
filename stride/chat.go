@@ -6,7 +6,7 @@ import (
 
 	"bitbucket.org/atlassian/go-stride/pkg/stride"
 	"github.com/appscode/envconfig"
-	"github.com/inhuman/go-notify"
+	"github.com/appscode/go-notify"
 )
 
 const (

@@ -6,8 +6,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/appscode/envconfig"
+	"github.com/appscode/go-notify"
 	"github.com/golang/glog"
-	"github.com/inhuman/go-notify"
 	"net/http"
 )
 

@@ -1,4 +1,4 @@
-module github.com/inhuman/go-notify
+module github.com/appscode/go-notify
 
 require (
 	bitbucket.org/atlassian/go-stride v0.0.0-20180601005642-78855f0a5d80
