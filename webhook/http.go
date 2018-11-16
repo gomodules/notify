@@ -5,8 +5,8 @@ import (
 
 	"errors"
 	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
 	"github.com/appscode/go/net/httpclient"
+	"github.com/inhuman/go-notify"
 )
 
 const UID = "webhook"

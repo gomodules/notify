@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
+	"github.com/inhuman/go-notify"
 )
 
 const (

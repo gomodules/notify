@@ -5,7 +5,7 @@ import (
 
 	"errors"
 	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
+	"github.com/inhuman/go-notify"
 	gomail "gopkg.in/gomail.v2"
 )
 
