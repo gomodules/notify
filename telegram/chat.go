@@ -74,14 +74,10 @@ func (c *client) Send() error {
 
 	u := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", c.opt.Token)
 
-	fmt.Println("telegram url:", u)
-
 	for _, channel := range c.opt.Channel {
 		data := url.Values{}
 		data.Set("chat_id", channel)
 		data.Set("text", c.body)
-
-		fmt.Printf("payload: %+v\n", data)
 
 		resp, err := http.PostForm(u, data)
 		if err != nil {
