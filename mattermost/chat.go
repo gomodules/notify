@@ -82,7 +82,7 @@ func (c *client) Send() error {
 		Description string `json:"description"`
 	}
 
-	u := fmt.Sprintf("https://%s/hooks/%s", c.opt.Url, c.opt.HookId)
+	u := fmt.Sprintf("%s/hooks/%s", c.opt.Url, c.opt.HookId)
 
 	for _, channel := range c.opt.Channel {
 
