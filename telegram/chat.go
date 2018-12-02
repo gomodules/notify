@@ -49,6 +49,10 @@ func Load(loader envconfig.LoaderFunc) (*client, error) {
 	return New(opt), nil
 }
 
+func (c *client) SetChannel(name string) {
+	c.opt.Channel = []string{name}
+}
+
 func (c client) UID() string {
 	return UID
 }
