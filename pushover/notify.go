@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const (
@@ -84,7 +84,7 @@ func (c *client) Send() error {
 	if c.opt.Token == "" {
 		return errors.New("Missing token")
 	}
-	if c.opt.User =="" {
+	if c.opt.User == "" {
 		return errors.New("Missing user")
 	}
 	if c.opt.Message == "" {

@@ -1,12 +1,12 @@
 package webhook
 
 import (
+	"errors"
 	"net/http"
 
-	"errors"
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
 	"github.com/appscode/go/net/httpclient"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const UID = "webhook"

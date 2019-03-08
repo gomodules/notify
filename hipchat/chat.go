@@ -9,9 +9,9 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
 	"github.com/tbruyelle/hipchat-go/hipchat"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const UID = "hipchat"

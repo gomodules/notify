@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"bitbucket.org/atlassian/go-stride/pkg/stride"
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const (

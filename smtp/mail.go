@@ -4,8 +4,8 @@ import (
 	"crypto/tls"
 
 	"errors"
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 	gomail "gopkg.in/gomail.v2"
 )
 

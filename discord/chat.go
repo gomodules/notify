@@ -3,9 +3,9 @@ package discord
 import (
 	"errors"
 
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
 	"github.com/bwmarrin/discordgo"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const UID = "discord"
