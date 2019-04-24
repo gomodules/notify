@@ -3,8 +3,8 @@ package eventer
 import (
 	"strings"
 
-	notify "github.com/2tgroup/go-notify"
-	"github.com/2tgroup/go-notify/unified"
+	notify "gomodules.xyz/notify"
+	"gomodules.xyz/notify/unified"
 )
 
 type (

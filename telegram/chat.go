@@ -49,7 +49,7 @@ func Load(loader envconfig.LoaderFunc) (*client, error) {
 	return New(opt), nil
 }
 
-func (c *client) SetChannel(name string) {
+func (c *client) WithChannel(name string) {
 	c.opt.Channel = []string{name}
 }
 
@@ -104,10 +104,9 @@ func (c *client) Send() error {
 		if resp.StatusCode != http.StatusOK {
 			var r ErrorResponse
 			err := json.NewDecoder(resp.Body).Decode(&r)
-
-			fmt.Println("ERROR:", r)
-
-			if err == nil && !r.Ok {
+			if err != nil {
+				glog.Warningf("failed to send message to channel %s. Reason: %s", channel, err)
+			} else if !r.Ok {
 				glog.Warningf("failed to send message to channel %s. Reason: %d - %s", channel, r.ErrorCode, r.Description)
 			}
 		}

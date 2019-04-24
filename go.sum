@@ -1,5 +1,5 @@
-github.com/appscode/go v0.0.0-20190112082056-52eaa8008e2e h1:QwszriolcyRBOTovn+OLx/f1yclQtatwoVqvAvPGQlI=
-github.com/appscode/go v0.0.0-20190112082056-52eaa8008e2e/go.mod h1:a9V9cFfL4x+IolJkNLeM4ZaNPTY8GXCyQB6Ool2I4AI=
+github.com/appscode/go v0.0.0-20190411132050-50c98d5fbcdd h1:6R2FjhAfY+3m0jRxUVtfO07bOXcbVTOtoRSF8RQOxIo=
+github.com/appscode/go v0.0.0-20190411132050-50c98d5fbcdd/go.mod h1:a9V9cFfL4x+IolJkNLeM4ZaNPTY8GXCyQB6Ool2I4AI=
 github.com/appscode/go-notify v0.0.0-20180516083708-17078f08a5ba/go.mod h1:ta+dFCq77Bh3GwYmYtKuzO0HhDxsalgPelI4nDOk5lA=
 github.com/beevik/ntp v0.2.0/go.mod h1:hIHWr+l3+/clUnF44zdK+CWW7fO8dR5cIylAQ76NRpg=
 github.com/bwmarrin/discordgo v0.19.0 h1:kMED/DB0NR1QhRcalb85w0Cu3Ep2OrGAqZH1R5awQiY=
@@ -20,8 +20,8 @@ github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870/go.mod h1:5tD+ne
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/flosch/pongo2 v0.0.0-20180809100617-24195e6d38b0/go.mod h1:rE0ErqqBaMcp9pzj8JxV1GcfDBpuypXYxlR1c37AUwg=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
-github.com/gobuffalo/envy v1.6.15 h1:OsV5vOpHYUpP7ZLS6sem1y40/lNX1BZj+ynMiRi21lQ=
-github.com/gobuffalo/envy v1.6.15/go.mod h1:n7DRkBerg/aorDM8kbduw5dN3oXGswK5liaSCx4T5NI=
+github.com/gobuffalo/envy v1.7.0 h1:GlXgaiBkmrYMHco6t4j7SacKO4XUjvh5pwXh0f4uxXU=
+github.com/gobuffalo/envy v1.7.0/go.mod h1:n7DRkBerg/aorDM8kbduw5dN3oXGswK5liaSCx4T5NI=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=
 github.com/golang/protobuf v1.2.0 h1:P3YflyNX/ehuJFLhxviNdFxQPkGK5cDcApsge1SqnvM=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
@@ -34,8 +34,8 @@ github.com/howeyc/gopass v0.0.0-20170109162249-bf9dde6d0d2c/go.mod h1:lADxMC39cJ
 github.com/hpcloud/tail v1.0.0 h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
 github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
-github.com/jaytaylor/html2text v0.0.0-20180606194806-57d518f124b0 h1:xqgexXAGQgY3HAjNPSaCqn5Aahbo5TKsmhp8VRfr1iQ=
-github.com/jaytaylor/html2text v0.0.0-20180606194806-57d518f124b0/go.mod h1:CVKlgaMiht+LXvHG173ujK6JUhZXKb2u/BQtjPDIvyk=
+github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 h1:jTkyeF7NZ5oIr0ESmcrpiDgAfoidCBF4F5kJhjtaRwE=
+github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43/go.mod h1:CVKlgaMiht+LXvHG173ujK6JUhZXKb2u/BQtjPDIvyk=
 github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
 github.com/json-iterator/go v1.1.5/go.mod h1:+SdeFBvtyEkXs7REEP0seUULqWtbJapLOCVDaaPEHmU=
@@ -82,6 +82,7 @@ github.com/spf13/pflag v1.0.2/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf h1:pvbZ0lM0XWPBqUKqFU8cmavspvIl9nulOYwdy6IFRRo=
 github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf/go.mod h1:RJID2RhlZKId02nZ62WenDCkgHFerpIOmW0iT7GKmXM=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.2.2 h1:bSDNvY7ZPG5RlJ8otE/7V6gMiyenm9RtJ7IUVIAoJ1w=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
@@ -99,6 +100,8 @@ golang.org/x/sys v0.0.0-20180831094639-fa5fdf94c789/go.mod h1:STP8DvDyc/dI5b8T5h
 golang.org/x/sys v0.0.0-20180909124046-d0be0721c37e h1:o3PsSEY8E4eXWkXrIP9YJALUkVZqzHJT5DOasTyn8Vs=
 golang.org/x/sys v0.0.0-20180909124046-d0be0721c37e/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+gomodules.xyz/envconfig v1.3.0 h1:w1laMNVtP05uOKqmRAY6Vx7HvfPL9yc388gcVtUiI/M=
+gomodules.xyz/envconfig v1.3.0/go.mod h1:41y72mzHT7+jFNgyBpJRrZWuZJcLmLrTpq6iGgOFJMQ=
 gomodules.xyz/envconfig v1.3.1-0.20190308184047-426f31af0d45 h1:juzzlx91nWAOsHuOVfXZPMXHtJEKouZvY9bBbwlOeYs=
 gomodules.xyz/envconfig v1.3.1-0.20190308184047-426f31af0d45/go.mod h1:41y72mzHT7+jFNgyBpJRrZWuZJcLmLrTpq6iGgOFJMQ=
 gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc h1:2gGKlE2+asNV9m7xrywl36YYNnBG5ZQ0r/BOOxqPpmk=
