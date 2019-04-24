@@ -2,7 +2,7 @@
 set -eou pipefail
 
 GOPATH=$(go env GOPATH)
-REPO_ROOT="$GOPATH/src/github.com/appscode/go-notify"
+REPO_ROOT="$GOPATH/src/gomodules.xyz/notify"
 
 pushd $REPO_ROOT
 

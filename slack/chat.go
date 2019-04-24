@@ -1,10 +1,11 @@
 package slack
 
 import (
+	"context"
 	"errors"
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
 	"github.com/nlopes/slack"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const UID = "slack"
@@ -59,12 +60,15 @@ func (c client) To(to string, cc ...string) notify.ByChat {
 
 func (c *client) Send() error {
 	if len(c.opt.Channel) == 0 {
-		return errors.New("Missing to")
+		return errors.New("missing to")
 	}
 
 	s := slack.New(c.opt.AuthToken)
 	for _, channel := range c.opt.Channel {
-		if _, _, err := s.PostMessage(channel, c.body, slack.PostMessageParameters{}); err != nil {
+		if _, _, err := s.PostMessageContext(
+			context.TODO(),
+			channel,
+			slack.MsgOptionText(c.body, false)); err != nil {
 			return err
 		}
 	}

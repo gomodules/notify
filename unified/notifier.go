@@ -6,19 +6,17 @@ import (
 	"os"
 	"strings"
 
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify/discord"
-	"github.com/appscode/go-notify/hipchat"
-	"github.com/appscode/go-notify/log"
-	"github.com/appscode/go-notify/mailgun"
-	"github.com/appscode/go-notify/plivo"
-	"github.com/appscode/go-notify/pushover"
-	"github.com/appscode/go-notify/slack"
-	"github.com/appscode/go-notify/smtp"
-	"github.com/appscode/go-notify/stride"
-	"github.com/appscode/go-notify/telegram"
-	"github.com/appscode/go-notify/twilio"
-	"github.com/appscode/go-notify/webhook"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify/discord"
+	"gomodules.xyz/notify/log"
+	"gomodules.xyz/notify/mailgun"
+	"gomodules.xyz/notify/plivo"
+	"gomodules.xyz/notify/pushover"
+	"gomodules.xyz/notify/slack"
+	"gomodules.xyz/notify/smtp"
+	"gomodules.xyz/notify/telegram"
+	"gomodules.xyz/notify/twilio"
+	"gomodules.xyz/notify/webhook"
 )
 
 const (
@@ -43,8 +41,6 @@ func DefaultVia(via string) (interface{}, error) {
 		return smtp.Default()
 	case mailgun.UID:
 		return mailgun.Default()
-	case hipchat.UID:
-		return hipchat.Default()
 	case slack.UID:
 		return slack.Default()
 	case log.UID:
@@ -57,8 +53,6 @@ func DefaultVia(via string) (interface{}, error) {
 		return telegram.Default()
 	case discord.UID:
 		return discord.Default()
-	case stride.UID:
-		return stride.Default()
 	}
 	return nil, fmt.Errorf("unknown notifier %s", via)
 }
@@ -81,8 +75,6 @@ func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 		return smtp.Load(loader)
 	case mailgun.UID:
 		return mailgun.Load(loader)
-	case hipchat.UID:
-		return hipchat.Load(loader)
 	case slack.UID:
 		return slack.Load(loader)
 	case log.UID:
@@ -95,8 +87,6 @@ func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 		return telegram.Load(loader)
 	case discord.UID:
 		return discord.Load(loader)
-	case stride.UID:
-		return stride.Load(loader)
 	}
 	return nil, fmt.Errorf("unknown notifier %s", via)
 }

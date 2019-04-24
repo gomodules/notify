@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"errors"
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const UID = "stdout"
