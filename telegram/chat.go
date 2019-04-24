@@ -22,7 +22,7 @@ type Options struct {
 type client struct {
 	opt       Options
 	body      string
-	parseNode string
+	parseMode string
 }
 
 var _ notify.ByChat = &client{}
@@ -62,12 +62,8 @@ func (c client) WithBody(body string) notify.ByChat {
 	return &c
 }
 
-func (c *client) WithParseNode() {
-	c.parseNode = "HTML"
-}
-
-func (c *client) WithBodyAppend(body string) {
-	c.body = body
+func (c *client) WithParseMode() {
+	c.parseMode = "HTML"
 }
 
 func (c client) To(to string, cc ...string) notify.ByChat {
@@ -91,8 +87,8 @@ func (c *client) Send() error {
 	for _, channel := range c.opt.Channel {
 		data := url.Values{}
 
-		if c.parseNode != "" {
-			data.Set("parse_mode", c.parseNode)
+		if c.parseMode != "" {
+			data.Set("parse_mode", c.parseMode)
 		}
 		data.Set("text", c.body)
 		data.Set("chat_id", channel)
