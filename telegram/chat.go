@@ -20,8 +20,9 @@ type Options struct {
 }
 
 type client struct {
-	opt  Options
-	body string
+	opt       Options
+	body      string
+	parseMode string
 }
 
 var _ notify.ByChat = &client{}
@@ -48,6 +49,10 @@ func Load(loader envconfig.LoaderFunc) (*client, error) {
 	return New(opt), nil
 }
 
+func (c *client) WithChannel(name string) {
+	c.opt.Channel = []string{name}
+}
+
 func (c client) UID() string {
 	return UID
 }
@@ -55,6 +60,10 @@ func (c client) UID() string {
 func (c client) WithBody(body string) notify.ByChat {
 	c.body = body
 	return &c
+}
+
+func (c *client) WithParseMode() {
+	c.parseMode = "HTML"
 }
 
 func (c client) To(to string, cc ...string) notify.ByChat {
@@ -77,8 +86,12 @@ func (c *client) Send() error {
 
 	for _, channel := range c.opt.Channel {
 		data := url.Values{}
-		data.Set("chat_id", channel)
+
+		if c.parseMode != "" {
+			data.Set("parse_mode", c.parseMode)
+		}
 		data.Set("text", c.body)
+		data.Set("chat_id", channel)
 
 		resp, err := http.PostForm(u, data)
 		if err != nil {
@@ -87,7 +100,9 @@ func (c *client) Send() error {
 		if resp.StatusCode != http.StatusOK {
 			var r ErrorResponse
 			err := json.NewDecoder(resp.Body).Decode(&r)
-			if err == nil && !r.Ok {
+			if err != nil {
+				glog.Warningf("failed to send message to channel %s. Reason: %s", channel, err)
+			} else if !r.Ok {
 				glog.Warningf("failed to send message to channel %s. Reason: %d - %s", channel, r.ErrorCode, r.Description)
 			}
 		}

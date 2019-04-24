@@ -3,14 +3,14 @@ module gomodules.xyz/notify
 go 1.12
 
 require (
-	github.com/appscode/go v0.0.0-20190112082056-52eaa8008e2e
+	github.com/appscode/go v0.0.0-20190411132050-50c98d5fbcdd
 	github.com/bwmarrin/discordgo v0.19.0
 	github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51 // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
-	github.com/gobuffalo/envy v1.6.15 // indirect
+	github.com/gobuffalo/envy v1.7.0 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
-	github.com/jaytaylor/html2text v0.0.0-20180606194806-57d518f124b0
+	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43
 	github.com/lusis/go-slackbot v0.0.0-20180109053408-401027ccfef5 // indirect
 	github.com/lusis/slack-test v0.0.0-20190408224659-6cf59653add2 // indirect
 	github.com/mailgun/mailgun-go v2.0.0+incompatible

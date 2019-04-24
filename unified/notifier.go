@@ -3,6 +3,7 @@ package unified
 import (
 	"errors"
 	"fmt"
+	"gomodules.xyz/notify"
 	"os"
 	"strings"
 
@@ -94,4 +95,36 @@ func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 		return webhook.Load(loader)
 	}
 	return nil, fmt.Errorf("unknown notifier %s", via)
+}
+
+func NotifyViaDefault(notifyBy, sub, body, to string, cc ...string) error {
+	i, err := DefaultVia(notifyBy)
+	if err != nil {
+		return err
+	}
+	return Notify(i, sub, body, to, cc...)
+}
+
+func Notify(i interface{}, sub, body, to string, cc ...string) error {
+	switch n := i.(type) {
+	case notify.ByEmail:
+		return n.To(to, cc...).
+			WithSubject(sub).
+			WithBody(body).
+			WithNoTracking().
+			Send()
+	case notify.BySMS:
+		return n.To(to, cc...).
+			WithBody(sub).
+			Send()
+	case notify.ByChat:
+		return n.To(to, cc...).
+			WithBody(sub).
+			Send()
+	case notify.ByPush:
+		return n.To(append([]string{to}, cc...)...).
+			WithBody(sub).
+			Send()
+	}
+	return nil
 }
