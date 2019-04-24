@@ -16,11 +16,9 @@ Send notification via Email, SMS, Chat etc.
 - [X] plivo.com
 
 ### Supported Chat Services
-- [x] Hipchat
 - [x] Slack
 - [x] Telegram
 - [x] Discord
-- [x] Stride
 
 ### Supported Push Notification Services
 - [x] Pushover.net
