@@ -1,21 +1,24 @@
-package telegram
+package mattermost
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
-	"net/url"
 
 	"github.com/golang/glog"
 	"gomodules.xyz/envconfig"
 	"gomodules.xyz/notify"
 )
 
-const UID = "telegram"
+const UID = "mattermost"
 
 type Options struct {
-	Token   string   `envconfig:"TOKEN" required:"true"`
+	Url     string   `envconfig:"URL" required:"true"`
+	HookId  string   `envconfig:"HOOK_ID" required:"true"`
+	IconUrl string   `envconfig:"ICON_URL"`
+	BotName string   `envconfig:"BOT_NAME"`
 	Channel []string `envconfig:"CHANNEL"`
 }
 
@@ -62,6 +65,13 @@ func (c client) To(to string, cc ...string) notify.ByChat {
 	return &c
 }
 
+type message struct {
+	Channel  string `json:"channel,omitempty"`
+	Username string `json:"username,omitempty"`
+	IconUrl  string `json:"icon_url,omitempty"`
+	Text     string `json:"text"`
+}
+
 func (c *client) Send() error {
 	if len(c.opt.Channel) == 0 {
 		return errors.New("missing to")
@@ -73,17 +83,28 @@ func (c *client) Send() error {
 		Description string `json:"description"`
 	}
 
-	u := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", c.opt.Token)
+	u := fmt.Sprintf("%s/hooks/%s", c.opt.Url, c.opt.HookId)
 
 	for _, channel := range c.opt.Channel {
-		data := url.Values{}
-		data.Set("chat_id", channel)
-		data.Set("text", c.body)
 
-		resp, err := http.PostForm(u, data)
+		m := message{
+			Channel:  channel,
+			Username: c.opt.BotName,
+			IconUrl:  c.opt.IconUrl,
+			Text:     c.body,
+		}
+
+		msg, err := json.Marshal(m)
 		if err != nil {
 			return err
 		}
+
+		resp, err := http.Post(u, "application/json", bytes.NewBuffer(msg))
+
+		if err != nil {
+			return err
+		}
+
 		if resp.StatusCode != http.StatusOK {
 			var r ErrorResponse
 			err := json.NewDecoder(resp.Body).Decode(&r)
