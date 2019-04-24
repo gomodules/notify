@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/appscode/envconfig"
-	"github.com/appscode/go-notify"
-	"github.com/golang/glog"
 	"net/http"
+
+	"github.com/golang/glog"
+	"gomodules.xyz/envconfig"
+	"gomodules.xyz/notify"
 )
 
 const UID = "mattermost"
