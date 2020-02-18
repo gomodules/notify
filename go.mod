@@ -1,9 +1,9 @@
 module gomodules.xyz/notify
 
-go 1.12
+go 1.13
 
 require (
-	github.com/appscode/go v0.0.0-20190808133642-1d4ef1f1c1e0
+	github.com/appscode/go v0.0.0-20191119085241-0887d8ec2ecc
 	github.com/bwmarrin/discordgo v0.19.0
 	github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51 // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
