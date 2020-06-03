@@ -11,15 +11,13 @@ require (
 	github.com/gobuffalo/envy v1.7.0 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43
-	github.com/lusis/go-slackbot v0.0.0-20180109053408-401027ccfef5 // indirect
-	github.com/lusis/slack-test v0.0.0-20190426140909-c40012f20018 // indirect
 	github.com/mailgun/mailgun-go v2.0.0+incompatible
 	github.com/mattn/go-runewidth v0.0.4 // indirect
-	github.com/nlopes/slack v0.5.0
 	github.com/olekukonko/tablewriter v0.0.1 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/pkg/errors v0.8.1
+	github.com/slack-go/slack v0.6.5
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	gomodules.xyz/envconfig v1.3.1-0.20190308184047-426f31af0d45
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
