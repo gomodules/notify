@@ -1,4 +1,4 @@
-# github.com/appscode/go v0.0.0-20190808133642-1d4ef1f1c1e0
+# github.com/appscode/go v0.0.0-20191119085241-0887d8ec2ecc
 github.com/appscode/go/net/httpclient
 # github.com/bwmarrin/discordgo v0.19.0
 github.com/bwmarrin/discordgo
@@ -10,7 +10,7 @@ github.com/gobuffalo/envy
 github.com/golang/glog
 # github.com/google/go-querystring v1.0.0
 github.com/google/go-querystring/query
-# github.com/gorilla/websocket v1.4.0
+# github.com/gorilla/websocket v1.4.2
 github.com/gorilla/websocket
 # github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43
 github.com/jaytaylor/html2text
@@ -20,9 +20,6 @@ github.com/joho/godotenv
 github.com/mailgun/mailgun-go
 # github.com/mattn/go-runewidth v0.0.4
 github.com/mattn/go-runewidth
-# github.com/nlopes/slack v0.5.0
-github.com/nlopes/slack
-github.com/nlopes/slack/slackutilsx
 # github.com/olekukonko/tablewriter v0.0.1
 github.com/olekukonko/tablewriter
 # github.com/pkg/errors v0.8.1
@@ -31,11 +28,16 @@ github.com/pkg/errors
 github.com/rogpeppe/go-internal/modfile
 github.com/rogpeppe/go-internal/module
 github.com/rogpeppe/go-internal/semver
+# github.com/slack-go/slack v0.6.5
+github.com/slack-go/slack
+github.com/slack-go/slack/internal/errorsx
+github.com/slack-go/slack/internal/timex
+github.com/slack-go/slack/slackutilsx
 # github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf
 github.com/ssor/bom
 # golang.org/x/crypto v0.0.0-20190422183909-d864b10871cd
-golang.org/x/crypto/nacl/secretbox
 golang.org/x/crypto/internal/subtle
+golang.org/x/crypto/nacl/secretbox
 golang.org/x/crypto/poly1305
 golang.org/x/crypto/salsa20/salsa
 # golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3

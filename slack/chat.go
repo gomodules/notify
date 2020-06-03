@@ -3,7 +3,7 @@ package slack
 import (
 	"context"
 	"errors"
-	"github.com/nlopes/slack"
+	"github.com/slack-go/slack"
 	"gomodules.xyz/envconfig"
 	"gomodules.xyz/notify"
 )
