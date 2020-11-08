@@ -19,6 +19,7 @@ import (
 	"gomodules.xyz/notify/telegram"
 	"gomodules.xyz/notify/twilio"
 	"gomodules.xyz/notify/webhook"
+	"gomodules.xyz/notify/tiniyo"
 )
 
 const (
@@ -51,6 +52,8 @@ func DefaultVia(via string) (interface{}, error) {
 		return slack.Default()
 	case smtp.UID:
 		return smtp.Default()
+	case tiniyo.UID:
+		return tiniyo.Default()
 	case telegram.UID:
 		return telegram.Default()
 	case twilio.UID:
@@ -83,6 +86,8 @@ func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 		return plivo.Load(loader)
 	case pushover.UID:
 		return pushover.Load(loader)
+	case tiniyo.UID:
+		return tiniyo.Default()
 	case twilio.UID:
 		return twilio.Load(loader)
 	case slack.UID:
