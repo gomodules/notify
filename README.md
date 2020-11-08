@@ -14,6 +14,7 @@ Send notification via Email, SMS, Chat etc.
 ### Supported SMS Services
 - [x] Twilio
 - [X] plivo.com
+- [x] tiniyo.com
 
 ### Supported Chat Services
 - [x] Slack
