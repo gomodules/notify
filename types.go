@@ -19,7 +19,13 @@ type BySMS interface {
 	To(to string, cc ...string) BySMS
 	Send() error
 }
-
+type ByVoice interface {
+	UID() string
+	From(from string) ByVoice
+	WithBody(body string) ByVoice
+	To(to string, cc ...string) ByVoice
+	Send() error
+}
 type ByChat interface {
 	UID() string
 	WithBody(body string) ByChat
