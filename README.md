@@ -16,6 +16,9 @@ Send notification via Email, SMS, Chat etc.
 - [X] plivo.com
 - [x] tiniyo.com
 
+### Supported Voice Services
+- [x] tiniyo.com
+
 ### Supported Chat Services
 - [x] Slack
 - [x] Telegram

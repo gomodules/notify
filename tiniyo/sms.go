@@ -21,6 +21,7 @@ type Options struct {
         AuthID    string   `envconfig:"AUTH_ID" required:"true"`
         AuthToken string   `envconfig:"AUTH_TOKEN" required:"true"`
         From      string   `envconfig:"FROM" required:"true"`
+        Channel   string   `envconfig:"NOTIFY_CHANNEL" required:"true"`
         To        []string `envconfig:"TO"`
 }
 
@@ -29,13 +30,24 @@ type client struct {
         body string
 }
 
+type vClient struct {
+        opt  Options
+        body string
+}
+
 var _ notify.BySMS = &client{}
 
-func New(opt Options) *client {
+var _ notify.ByVoice = &vClient{}
+
+func New(opt Options)  interface {} {
+        if opt.Channel == "voice"{
+                clientTemp := vClient{opt: opt}
+                return &clientTemp
+        }
         return &client{opt: opt}
 }
 
-func Default() (*client, error) {
+func Default() (interface{}, error) {
         var opt Options
         err := envconfig.Process(UID, &opt)
         if err != nil {
@@ -44,7 +56,7 @@ func Default() (*client, error) {
         return New(opt), nil
 }
 
-func Load(loader envconfig.LoaderFunc) (*client, error) {
+func Load(loader envconfig.LoaderFunc) (interface{}, error) {
         var opt Options
         err := envconfig.Load(UID, &opt, loader)
         if err != nil {

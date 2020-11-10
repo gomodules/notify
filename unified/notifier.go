@@ -87,7 +87,7 @@ func LoadVia(via string, loader envconfig.LoaderFunc) (interface{}, error) {
 	case pushover.UID:
 		return pushover.Load(loader)
 	case tiniyo.UID:
-		return tiniyo.Default()
+		return tiniyo.Load(loader)
 	case twilio.UID:
 		return twilio.Load(loader)
 	case slack.UID:
@@ -122,6 +122,10 @@ func Notify(i interface{}, sub, body, to string, cc ...string) error {
 		return n.To(to, cc...).
 			WithBody(sub).
 			Send()
+	case notify.ByVoice:
+		return n.To(to, cc...).
+			WithBody(sub).
+			Send()
 	case notify.ByChat:
 		return n.To(to, cc...).
 			WithBody(sub).
@@ -131,5 +135,6 @@ func Notify(i interface{}, sub, body, to string, cc ...string) error {
 			WithBody(sub).
 			Send()
 	}
+	fmt.Println("out of the loop")
 	return nil
 }
