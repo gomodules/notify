@@ -1,5 +1,7 @@
 package notify
 
+import "github.com/slack-go/slack"
+
 type ByEmail interface {
 	UID() string
 	From(from string) ByEmail
@@ -29,8 +31,11 @@ type ByVoice interface {
 type ByChat interface {
 	UID() string
 	WithBody(body string) ByChat
+	WithProxy(proxyHost string, proxyPort int) ByChat
+	WithMsgOption(msgOption slack.MsgOption) ByChat
 	To(to string, cc ...string) ByChat
 	Send() error
+	SendAsBlockMessage() error
 }
 
 type ByPush interface {
