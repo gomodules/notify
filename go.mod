@@ -17,6 +17,7 @@ require (
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/pkg/errors v0.8.1
+	github.com/rs/zerolog v1.20.0
 	github.com/slack-go/slack v0.6.5
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	gomodules.xyz/envconfig v1.3.1-0.20190308184047-426f31af0d45
