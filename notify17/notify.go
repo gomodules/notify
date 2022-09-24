@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"gomodules.xyz/envconfig"
 	"gomodules.xyz/notify"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
