@@ -19,6 +19,8 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/slack-go/slack v0.6.5
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
+	golang.org/x/crypto v0.6.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
 	gomodules.xyz/envconfig v1.3.1-0.20190308184047-426f31af0d45
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
