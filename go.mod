@@ -11,8 +11,7 @@ require (
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/gobuffalo/envy v1.7.0 // indirect
-	github.com/golang/glog v1.0.0
-	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/golang/glog v1.2.4
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43
 	github.com/kr/text v0.2.0 // indirect
